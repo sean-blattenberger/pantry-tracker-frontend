@@ -23,7 +23,7 @@ class FoodCard extends React.Component {
   render() {
     return (
       <Col offset="m1" m={4} s={12}>
-        <Card key={this.props.index} className='white' textClassName='black-text' title={<h3>Food Card</h3>} actions={[<Button key={this.props.index} className="delete-button red black-text" href='/delete'>Delete Item</Button>, <Button key={this.props.index} onClick={this.makeEditable} className="black-text" href='/update'>Update Item</Button>]}>
+        <Card className='white' textClassName='black-text' title="Food Card" actions={[<Button className="delete-button red black-text" href='/delete'>Delete Item</Button>, <Button onClick={this.makeEditable} className="black-text" href='/update'>Update Item</Button>]}>
           <form onSubmit={this.submitChange}>
             <Row>
               {this.state.editable ? <Input name="name" type="text" onChange={this.handleChange} value={this.state.food.name} defaultValue={this.props.food.name}></Input> : this.props.food.name}

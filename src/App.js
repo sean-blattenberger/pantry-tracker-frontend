@@ -50,7 +50,7 @@ class App extends Component {
         </Navbar>
         <Row>
           {this.state.food.map((currFood, i) => {
-            return <FoodCard key={`${i}${currFood}`} update={this.updateField} food={currFood} />;
+            return <FoodCard key={currFood.id} update={this.updateField} food={currFood} />;
           })}
         </Row>
       </div>
