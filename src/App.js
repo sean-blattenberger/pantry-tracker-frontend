@@ -31,7 +31,6 @@ class App extends Component {
   }
 
 
-
   render() {
     console.log(this.state.food);
     return (
@@ -49,8 +48,11 @@ class App extends Component {
           </NavItem>
         </Navbar>
         <Row>
-          {this.state.food.map((currFood, i) => {
-            return <FoodCard key={currFood.id} update={this.updateField} food={currFood} />;
+          {Object.keys(this.state.food).map((key) => {
+            return <FoodCard
+                key={key}
+                update={this.updateField}
+                food={this.state.food[key]} />;
           })}
         </Row>
       </div>

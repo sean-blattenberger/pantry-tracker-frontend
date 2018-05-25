@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Input, Button, Icon } from "react-materialize";
 
 class FoodSubmit extends React.Component {
-  state = {};
+
   submitFood = event => {
     event.preventDefault();
     let foodFormData = new FormData(this.refs.form);
