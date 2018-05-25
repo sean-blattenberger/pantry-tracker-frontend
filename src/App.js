@@ -3,58 +3,40 @@ import "./App.css";
 import { Navbar, NavItem, Icon, Modal, Button, Row } from "react-materialize";
 import FoodCard from "./components/FoodCard";
 import FoodSubmit from "./components/FoodSubmit";
-const foodData = [
-  {
-    name: "Carrots",
-    location: "refrigerator",
-    amount: 2
-  },
-  {
-    name: "Fruit Snacks",
-    location: "panty",
-    amount: 15
-  },
-  {
-    name: "Potato Chips",
-    location: "panty",
-    amount: 2
-  },
-  {
-    name: "Canned Beans",
-    location: "panty",
-    amount: 4
-  },
-  {
-    name: "Milk",
-    location: "refrigerator",
-    amount: 1
-  },
-  {
-    name: "Chicken Breast",
-    location: "refrigerator",
-    amount: 8
-  }
-];
+import baseURL from "./serverConnect";
 
 class App extends Component {
   state = {
-    food: foodData
+    food: []
   };
+
+
+
   addFoodItem = item => {
     // let newData = this.state.food.push(item);
     this.setState({ food: this.state.food.concat(item) });
     console.log(this.state.food);
     document.getElementById("modal").classList.toggle("open");
   };
+
+    componentWillMount() {
+        fetch(baseURL)
+            .then(response => response.json())
+            .then(food => this.setState({food}))
+    };
+
   updateField = (item) => {
     this.setState({ food: this.state.food.concat(item) });
   }
+
+
+
   render() {
     console.log(this.state.food);
     return (
       <div className="App">
         <Navbar brand={<Icon className="white-text">fastfood</Icon>} right>
-          <NavItem>Eatable Arrangrments</NavItem>
+          <NavItem>Eatable Arrangements</NavItem>
           <NavItem href="components.html">
             <Modal
               id="modal"
