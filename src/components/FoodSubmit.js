@@ -34,7 +34,7 @@ class FoodSubmit extends React.Component {
         </Row>
         <Row>
           <Button type="submit" waves="light">
-            button<Icon left>add</Icon>
+            Add<Icon left>add</Icon>
           </Button>
         </Row>
       </form>

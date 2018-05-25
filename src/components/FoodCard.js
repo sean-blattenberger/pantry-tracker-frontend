@@ -4,7 +4,7 @@ import Row from "react-materialize/lib/Row";
 
 class FoodCard extends React.Component {
   state = {
-    food: {},
+    food: '',
     editable: false
   }
   makeEditable = (event) => {
@@ -19,11 +19,12 @@ class FoodCard extends React.Component {
     event.preventDefault();
     // this.setState({food})
     this.props.update(this.state.food)
+    this.setState({editable: false})
   }
   render() {
     return (
       <Col offset="m1" m={4} s={12}>
-        <Card className='white' textClassName='black-text' title="Food Card" actions={[<Button className="delete-button red black-text" href='/delete'>Delete Item</Button>, <Button onClick={this.makeEditable} className="black-text" href='/update'>Update Item</Button>]}>
+        <Card className='white' textClassName='red-text text-lighten-3 thin condensed' title="" actions={[<Button className="delete-button red black-text" href='/delete'>Delete Item</Button>, <Button onClick={this.makeEditable} className="black-text" href='/update'>Update Item</Button>]}>
           <form onSubmit={this.submitChange}>
             <Row>
               {this.state.editable ? <Input name="name" type="text" onChange={this.handleChange} value={this.state.food.name} defaultValue={this.props.food.name}></Input> : this.props.food.name}
@@ -32,7 +33,7 @@ class FoodCard extends React.Component {
               {this.state.editable ? <Input name="amount" type="text" onChange={this.handleChange} value={this.state.food.amount} defaultValue={this.props.food.amount}></Input> : this.props.food.amount}
             </Row>
             <Row>
-              {this.state.editable ? <Input name="location" type="text" value={this.state.food.location} defaultValue={this.props.food.type}></Input> : this.state.food.location}
+              {this.state.editable ? <Input name="location" type="text" value={this.state.food.location} defaultValue={this.props.food.type}></Input> : this.state.food.location }
             </Row>
             <Row>
               {this.state.editable ? <Button type="submit">Update Item</Button> : ''}
